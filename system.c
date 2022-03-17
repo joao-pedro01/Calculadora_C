@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <ctype.h>
-void menu(); //prot√≥tipo da fun√ß√£o
+void menu(); //protÛtipo da funÁ„o
 float receber();
+void error();
 float somar(float x, float y);
 float subtrair(float x, float y);
 float multiplicar(float x, float y);
@@ -21,8 +22,6 @@ int main()
 
     do
     {
-        
-
         do
         {
             menu();
@@ -30,10 +29,7 @@ int main()
 
             if(Op != '+' && Op != '-' && Op != '*' && Op != '/')
             {
-                printf("\n\nOperador digitado √© inv√°lido!!!\n");
-                printf("Digite operador v√°lido: ");
-                _sleep(1000);
-                system("cls");
+                error();
             }
         } while (Op != '+' && Op != '-' && Op != '*' && Op != '/');
         
@@ -81,9 +77,17 @@ int main()
 
         printf("\n\n");
 
-        printf("Deseja fazer outra opera√ß√£o? (S/N)");
-        Op = getch();
-        Op = toupper(Op); //Converte a tecla para maiuscula       
+        do
+        {
+            printf("Deseja fazer outra operaÁ„o? (S/N)\n");
+            Op = getch();
+            Op = toupper(Op); //Converte a tecla para maiuscula
+
+            if(Op != 'S' || Op != 'N')
+            {
+                error();
+            }
+        } while (Op != 'S' || Op != 'N');
     } while (Op == 'S');
     
     system("pause");
@@ -91,30 +95,38 @@ int main()
 }//end function main
 void menu()
 {
+    system("cls");
     system("date /t");
     system("time /t");
     printf("\n-------Calculadora-------\n");
     printf("+ - * /\n");
-    printf("Escolha a opera√ß√£o: ");
+    printf("Escolha a operaÁ„o: ");
 }//end function menu
 float receber()
 {
-    float Num; //Variavel local, s√≥ executa enquanto a fun√ß√£o estiver sendo executada
+    float Num; //Variavel local, sÛ executa enquanto a funÁ„o estiver sendo executada
 
     do
     {
-        printf("\nInforme o valor: ");
+        printf("\nInforme o valor entre 0 ‡ 10: ");
         scanf("%f", &Num);
 
         if(Num <= 0 || Num > 10)
         {
-            printf("N√∫mero digitado √© inv√°lido!!!\n");
+            printf("N˙mero digitado È inv·lido!!!\n");
             printf("Digite novamente");
         }
     } while (Num <= 0 || Num > 10);
 
     return Num;
 }//end function receber
+void error()
+{
+    printf("\n\nOperador digitado È inv·lido!!!\n");
+    printf("Digite operador v·lido");
+    _sleep(1500);
+    system("cls");
+}
 float somar(float x, float y)
 {
     float Result;
@@ -154,5 +166,5 @@ float dividir(float x, float y)
 /*
     printf("O valor digitado %.2f", receber());
     Result = receber() + receber();
-    printf("\n A soma √© %.2f", Result);
+    printf("\n A soma È %.2f", Result);
 */
