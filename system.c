@@ -16,9 +16,6 @@ int main()
 
     char Op;
     float N1, N2, Result;
-    //system("mspaint");
-    //systen("c:\local_do_arquivo")
-    //system("calc");
 
     do
     {
@@ -33,26 +30,27 @@ int main()
             }
         } while (Op != '+' && Op != '-' && Op != '*' && Op != '/');
         
-        
         N1 = receber();
         N2 = receber();
         
         if(Op == '/')
         {
-            if (N1 == 0 ||N2 == 0)
+            if (N1 == 0 || N2 == 0)
             {
                 do
                 {
+                    error();
+
                     if(N1 == 0)
                     {
                         N1 = receber();
-                    }else 
+                    }
+                    else 
                     {
                         N2 = receber();
                     }
                 } while (N1 == 0 || N2 == 0);
-                
-            }        
+            }
         }
 
         switch (Op)
@@ -70,9 +68,6 @@ int main()
             case '/':
                 dividir(N1,N2);
                 break;
-            default:
-                printf("test");
-                break;
         }
 
         printf("\n\n");
@@ -83,11 +78,13 @@ int main()
             Op = getch();
             Op = toupper(Op); //Converte a tecla para maiuscula
 
-            if(Op != 'S' || Op != 'N')
+            if(Op != 'S' && Op != 'N')
             {
                 error();
             }
-        } while (Op != 'S' || Op != 'N');
+            
+            _sleep(500);
+        } while (Op != 'S' && Op != 'N');
     } while (Op == 'S');
     
     system("pause");
@@ -111,12 +108,12 @@ float receber()
         printf("\nInforme o valor entre 0 à 10: ");
         scanf("%f", &Num);
 
-        if(Num <= 0 || Num > 10)
+        if(Num < 0 || Num > 10)
         {
-            printf("Número digitado é inválido!!!\n");
+            printf("\nNúmero digitado é inválido!!!\n");
             printf("Digite novamente");
         }
-    } while (Num <= 0 || Num > 10);
+    } while (Num < 0 || Num > 10);
 
     return Num;
 }//end function receber
@@ -126,14 +123,12 @@ void error()
     printf("Digite operador válido");
     _sleep(1500);
     system("cls");
-}
+}//end function error
 float somar(float x, float y)
 {
     float Result;
 
     Result = x + y;
-
-    //printf("O resultado da de %.2f + %.2f = %.2f", x, y, Result);
 
     return Result;
 }//end function somar
@@ -142,8 +137,6 @@ float subtrair(float x, float y)
     float Result;
 
     Result = x - y;
-
-    //printf("O resultado da de %.2f - %.2f = %.2f", x, y, Result);
 
     return Result;
 }//end function subtrair
@@ -163,8 +156,3 @@ float dividir(float x, float y)
 
     printf("O resultado da de %.2f - %.2f = %.2f", x, y, Result);
 }//end function dividir
-/*
-    printf("O valor digitado %.2f", receber());
-    Result = receber() + receber();
-    printf("\n A soma é %.2f", Result);
-*/
