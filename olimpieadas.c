@@ -4,6 +4,7 @@
 #include <ctype.h>
 void menu();
 void LacarPontos();
+int Ginasta();
 
 int main()
 {
@@ -57,4 +58,10 @@ void LancarPontos()
     Total = ((Ouro * 3) + (Prata * 2) + (Bronze * 1));
 
     printf("\n\nPaís %i recebeu %i pontos\n", Total);
+}
+int Ginasta()
+{
+    int Ginasta[1], Juiz[1];
+
+    
 }
