@@ -21,8 +21,6 @@ int main()
 
     do
     {
-        
-
         do
         {
             menu();
@@ -50,7 +48,7 @@ int main()
                     if(N1 == 0)
                     {
                         N1 = receber();
-                    }else 
+                    }else
                     {
                         N2 = receber();
                     }
