@@ -1,156 +1,87 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h> //Para usar com o towpper
 #include <locale.h>
-#include <ctype.h>
-void menu(); //protótipo da função
-float receber();
-float somar(float x, float y);
-float subtrair(float x, float y);
-float multiplicar(float x, float y);
-float dividir(float x, float y);
+/*
+    Faça um programa que receba um código e conforme este código oriente a conduta médica conforme a tabela abaixo:
+*/
 
 int main()
 {
-    setlocale(LC_ALL, "portuguese");
-
+    setlocale (LC_ALL, "Portuguese");
+    int Cod;
     char Op;
-    float N1, N2, Result;
-    //system("mspaint");
-    //systen("c:\local_do_arquivo")
-    //system("calc");
-
+    
     do
     {
         do
         {
-            menu();
-            Op = getch();
+            float Cont = 4.0, ContSeg;
+            
+            system ("cls");
+            printf("    *================ MENU PRINCIPAL ================*\n");
+            printf("    |                                                |\n");
+            printf("    |                                                |\n");
+            printf("    |               1 - Dor de Cabeça                |\n");
+            printf("    |                                                |\n");
+            printf("    |               2 OU 3 - Gripe                   |\n");
+            printf("    |                                                |\n");
+            printf("    |               5 OU 7 - Vírose                  |\n");
+            printf("    |                                                |\n");
+            printf("    ==================================================\n");
 
-            if(Op != '+' && Op != '-' && Op != '*' && Op != '/')
+            printf ("\nDigite o código da doença: ");
+            scanf ("%i", &Cod);
+
+            if (Cod < 0 || Cod > 7 || Cod == 6)
             {
-                printf("\n\nOperador digitado é inválido!!!\n");
-                printf("Digite operador válido: ");
-                _sleep(1000);
-                system("cls");
-            }
-        } while (Op != '+' && Op != '-' && Op != '*' && Op != '/');
-        
-        
-        N1 = receber();
-        N2 = receber();
-        
-        if(Op == '/')
-        {
-            if (N1 == 0 ||N2 == 0)
-            {
-                do
+                printf ("\nCódigo inválido!!!\n");
+                printf ("Digite novamente\n\n");
+
+                _sleep (1500); //Pausa de 1.5seg
+                for (ContSeg = 0; ContSeg <= 3; ContSeg++)
                 {
-                    if(N1 == 0)
-                    {
-                        N1 = receber();
-                    }else
-                    {
-                        N2 = receber();
-                    }
-                } while (N1 == 0 || N2 == 0);
-                
-            }        
-        }
+                    Cont -= 1.0;
+                    system("cls");
+                    printf ("O sistema irá reiniciar em: %.2f segundos\n", Cont);
+                    _sleep (1000);
+                }
+                system ("cls"); //Limpa tela (CLEAR)
+            }
+        } while (Cod < 0 || Cod > 7 || Cod == 4 || Cod == 6);
 
-        switch (Op)
+        switch (Cod)
         {
-            case '+':
-                Result = somar(N1,N2);
-                printf("%.2f",Result);
-                break;
-            case '-':
-                subtrair(N1,N2);
-                break;
-            case '*':
-                multiplicar(N1,N2);
-                break;
-            case '/':
-                dividir(N1,N2);
-                break;
-            default:
-                printf("test");
-                break;
+            case 1:
+                printf ("\nDescrição: Dor de cabeça\n");
+                printf ("Orientação: Analgésico e descanço");
+            break;
+
+            case 2:
+            case 3:
+                printf ("\nDescrição: Gripe\n");
+                printf ("Orientação: Acompanhar a evolução e sintomas\n");
+            break;
+
+            case 5:
+            case 7:
+                printf ("\nDescrição: Vírose\n");
+                printf ("Orientação: Descanso e boa alimentação\n");
+            break;
         }
 
-        printf("\n\n");
-
-        printf("Deseja fazer outra operação? (S/N)");
-        Op = getch();
-        Op = toupper(Op); //Converte a tecla para maiuscula       
-    } while (Op == 'S');
-    
-    system("pause");
-    return 0;
-}//end function main
-void menu()
-{
-    system("date /t");
-    system("time /t");
-    printf("\n-------Calculadora-------\n");
-    printf("+ - * /\n");
-    printf("Escolha a operação: ");
-}//end function menu
-float receber()
-{
-    float Num; //Variavel local, só executa enquanto a função estiver sendo executada
-
-    do
-    {
-        printf("\nInforme o valor: ");
-        scanf("%f", &Num);
-
-        if(Num <= 0 || Num > 10)
+        do
         {
-            printf("Número digitado é inválido!!!\n");
-            printf("Digite novamente");
-        }
-    } while (Num <= 0 || Num > 10);
+            printf ("Tem mais pacientes? (S/N)\n");
+            Op = getche(); //Obtem a tecla apertada
+            Op = toupper(Op); //Converte a tecla para maiuscula
+            _sleep (1000);
 
-    return Num;
-}//end function receber
-float somar(float x, float y)
-{
-    float Result;
-
-    Result = x + y;
-
-    //printf("O resultado da de %.2f + %.2f = %.2f", x, y, Result);
-
-    return Result;
-}//end function somar
-float subtrair(float x, float y)
-{
-    float Result;
-
-    Result = x - y;
-
-    //printf("O resultado da de %.2f - %.2f = %.2f", x, y, Result);
-
-    return Result;
-}//end function subtrair
-float multiplicar(float x, float y)
-{
-    float Result;
-
-    Result = x + y;
-
-    printf("O resultado da de %.2f * %.2f = %.2f", x, y, Result);
-}//end function multiplicar
-float dividir(float x, float y)
-{
-    float Result;
-
-    Result = x / y;
-
-    printf("O resultado da de %.2f - %.2f = %.2f", x, y, Result);
-}//end function dividir
-/*
-    printf("O valor digitado %.2f", receber());
-    Result = receber() + receber();
-    printf("\n A soma é %.2f", Result);
-*/
+            if (Op != 78 && Op != 83)
+            {
+                printf ("\n tecla digitada é inválida!!!\n");
+                printf ("Digite novamente\n\n");
+            }
+        } while (Op != 78 && Op != 83);
+    } while (Op == 83);
+}
