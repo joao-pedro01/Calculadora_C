@@ -144,7 +144,7 @@ float multiplicar(float x, float y)
 {
     float Result;
 
-    Result = x + y;
+    Result = x * y;
 
     printf("O resultado da de %.2f * %.2f = %.2f", x, y, Result);
 }//end function multiplicar
