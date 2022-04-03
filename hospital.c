@@ -72,16 +72,18 @@ int main()
 
         do
         {
-            printf ("Tem mais pacientes? (S/N)\n");
+            printf ("\nTem mais pacientes? (S/N)");
             Op = getche(); //Obtem a tecla apertada
             Op = toupper(Op); //Converte a tecla para maiuscula
             _sleep (1000);
 
             if (Op != 78 && Op != 83)
             {
-                printf ("\n tecla digitada é inválida!!!\n");
+                printf ("\ntecla digitada é inválida!!!\n");
                 printf ("Digite novamente\n\n");
             }
+            _sleep (2000);
+            system("cls");
         } while (Op != 78 && Op != 83);
     } while (Op == 83);
 }
