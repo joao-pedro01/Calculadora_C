@@ -33,7 +33,7 @@ int main()
             printf ("\nDigite o código da doença: ");
             scanf ("%i", &Cod);
 
-            if (Cod < 0 || Cod > 7 || Cod == 6)
+            if (Cod < 0 || Cod > 7 || Cod == 4 || Cod == 6)
             {
                 printf ("\nCódigo inválido!!!\n");
                 printf ("Digite novamente\n\n");
@@ -54,7 +54,7 @@ int main()
         {
             case 1:
                 printf ("\nDescrição: Dor de cabeça\n");
-                printf ("Orientação: Analgésico e descanço");
+                printf ("Orientação: Analgésico e descanço\n");
             break;
 
             case 2:
