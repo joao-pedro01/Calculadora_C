@@ -27,6 +27,8 @@ int main()
             LancarPontos();
         }
         break;
+    case 'g':
+        
     
     default:
         break;
@@ -61,7 +63,7 @@ void LancarPontos()
 }
 int Ginasta()
 {
-    int Ginasta[1], Juiz[1];
+    int Ginasta, Juiz;
 
     
 }
