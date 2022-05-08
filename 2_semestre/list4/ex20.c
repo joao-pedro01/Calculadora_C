@@ -5,28 +5,76 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <ctype.h>
+// declaração das functions
 float getGrade();
-
+float media(float grade);
+void situation(float situation);
 
 int main()
 {
-    float grade, students;
+    setlocale(LC_ALL, "portuguese");
 
-    getGrade();
+    float grade, students, soma;
+
+    soma = getGrade();
+    soma = media(soma);
+    printf("\nA média dos alunos da sala é: %.2f\n", soma);
+    situation(soma);
+
+    return 0;
 }
+/*
+    function getGrad : float
+    return soma
+    function para retorno das notas
+*/
 float getGrade()
 {
     int i;
-    float gradeStudent[2];
+    float gradeStudent[2], soma = 0;
 
     for (i = 0; i < 2; i++)
     {
         do
         {
-            printf("Digite a nota %i do aluno: ", i+1);
+            printf("Digite a %iº nota do aluno: ", i+1);
             scanf("%f", &gradeStudent[i]);
-        } while ();
-        
-        
+        } while (gradeStudent[i] < 0 || gradeStudent[i] > 10);
+        soma += gradeStudent[i];
+    }
+    
+    return soma;
+}
+/*
+    function media : float
+    return grade
+    function para retorno das medias
+*/
+float media(float grade)
+{
+    float media;
+
+    media = grade / 2;
+
+    return media;
+}
+/*
+    function getGrad : void
+    return situation
+    function para print da situação do aluno
+*/
+void situation(float situation)
+{
+    if(situation <= 3)
+    {
+        printf("Reprovado\n");
+    }
+    else if(situation > 3 && situation < 7)
+    {
+        printf("Em exame\n");
+    }
+    else
+    {
+        printf("Aprovado\n");
     }
 }

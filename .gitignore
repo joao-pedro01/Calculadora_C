@@ -1,3 +1,2 @@
 /.vscode
-/1_semestre/*.exe
-/2_semestre/*.exe
+*.exe
