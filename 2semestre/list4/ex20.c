@@ -14,12 +14,12 @@ int main()
 {
     setlocale(LC_ALL, "portuguese");
 
-    float grade, students, soma;
+    float grade, students, sum;
 
-    soma = getGrade();
-    soma = media(soma);
-    printf("\nA média dos alunos da sala é: %.2f\n", soma);
-    situation(soma);
+    sum = getGrade();
+    sum = media(sum);
+    printf("\nA média dos alunos da sala é: %.2f\n", sum);
+    situation(sum);
 
     return 0;
 }
@@ -31,7 +31,7 @@ int main()
 float getGrade()
 {
     int i;
-    float gradeStudent[2], soma = 0;
+    float gradeStudent[2], sum = 0;
 
     for (i = 0; i < 2; i++)
     {
@@ -40,10 +40,10 @@ float getGrade()
             printf("Digite a %iº nota do aluno: ", i+1);
             scanf("%f", &gradeStudent[i]);
         } while (gradeStudent[i] < 0 || gradeStudent[i] > 10);
-        soma += gradeStudent[i];
+        sum += gradeStudent[i];
     }
     
-    return soma;
+    return sum;
 }
 /*
     function media : float
