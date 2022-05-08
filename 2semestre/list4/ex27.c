@@ -9,23 +9,24 @@ int main()
 {
     setlocale(LC_ALL, "portuguese");
 
-    int i;
+    int i, count = 0;
 
     char fruit[20], letter;
 
     printf("Digite o nome de uma fruta: ");
-    scanf("%s", fruit); 
+    scanf("%s", fruit);
 
     for ( i = 0; i < 20; i++)
     {
         letter = toupper(fruit[i]);
-        if(letter == 'S')
+        
+        if(letter == 'A' || letter == 'E' || letter == 'I' || letter == 'O' || letter == 'U')
         {
-            printf("test");
+            count ++;
         }
-
-
     }
+
+    printf("A fruta %s tem %i vogais", fruit, count);
 
     return 0;
 }
